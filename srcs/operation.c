@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:03:56 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/18 22:05:17 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/19 10:37:13 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,11 @@ void	stack_push(t_stack *stack, int value)
 	return ;
 }
 
-void	stack_pop(t_stack *stack, int value)
+void	stack_pop(t_stack *stack)
 {
 	if (stack_is_empty(stack))
 		return ;
-	value = stack->array[stack->top--];
+	stack->top--;
 	return ;
 }
 

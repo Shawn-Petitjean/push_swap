@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:19:45 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/18 15:38:24 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/19 10:37:47 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void		print_stack(t_stack *stack);
 
 //operateur pour le deplacement de la stack
 void		stack_push(t_stack *stack, int value);
-void		stack_pop(t_stack *stack, int value);
+void		stack_pop(t_stack *stack);
 void		stack_swap(t_stack *stack);
 void		stack_rotate(t_stack *stack);
 void		stack_rev_rotate(t_stack *stack);

@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:17:58 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/19 09:49:42 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/19 13:16:54 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void	first_sort(t_stack *a, t_stack *b, t_info *info)
 		if(a->array[a->top] > info->ave)
 			pb(a, b);
 		i++;
-		sa(a);
+		ra(a);
 	}
 	where_is_max(a);
 	return ;

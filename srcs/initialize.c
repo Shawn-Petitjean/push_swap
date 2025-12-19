@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/19 09:45:12 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/19 14:58:36 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,10 @@ void	init_swap(long int *tab, int len)
 	a = init_stack(tab, len);
 	b = init_stack(NULL, len);
 	info = init_info(a);
-	stack_rev_rotate(a);
-	print_stack(a);
+	// print_stack(a);
 	push_swap(a, b, info);
-	free(info);
+	// free(info);
+	// print_stack(a);
 	return (free(a->array), free(b->array)
 		, free(a), free(b));
 }
@@ -117,3 +117,5 @@ int	where_is_max(t_stack *stack)
 	}
 	return (max);
 }
+
+//654 231 5 0 14 800 11 215 1587 3854 2314
