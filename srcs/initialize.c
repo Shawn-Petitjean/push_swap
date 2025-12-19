@@ -1,0 +1,119 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   initialize.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
+/*   Updated: 2025/12/19 09:45:12 by shapetit         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "push_swap.h"
+#include "libft.h"
+
+void	init_swap(long int *tab, int len)
+{
+	t_stack	*a;
+	t_stack	*b;
+	t_info	*info;
+
+	a = init_stack(tab, len);
+	b = init_stack(NULL, len);
+	info = init_info(a);
+	stack_rev_rotate(a);
+	print_stack(a);
+	push_swap(a, b, info);
+	free(info);
+	return (free(a->array), free(b->array)
+		, free(a), free(b));
+}
+
+t_info	*init_info(t_stack *stack)
+{
+	t_info	*info;
+	int		ave;
+	int		i;
+
+	i = 0;
+	ave = 0;
+	info = malloc(sizeof(t_info) * 1);
+	info->max = stack->array[i];
+	info->min = stack->array[i];
+	while (i < stack->len)
+	{
+		if (info->max < stack->array[i])
+			info->max = stack->array[i];
+		if (info->min > stack->array[i])
+			info->min = stack->array[i];
+		ave += stack->array[i++];
+	}
+	info->ave = ave / stack->len;
+	return (info);
+}
+
+t_stack	*init_stack(long int *tab, int len)
+{
+	t_stack	*stack;
+	int		i;
+	int		*i_tab;
+
+	i = 0;
+	i_tab = malloc(len * sizeof(int));
+	while (i < len && tab)
+	{
+		i_tab[i] = tab[i];
+		i++;
+	}
+	i = len -1;
+	stack = malloc(sizeof(t_stack) * 1);
+	stack->array = malloc(len * sizeof(int));
+	stack->len = len;
+	stack->top = -1;
+	while (i >= 0 && tab)
+		stack_push(stack, i_tab[i--]);
+	return (free (i_tab), free (tab), stack);
+}
+
+int	where_is_min(t_stack *stack)
+{
+	int	i;
+	int	temp;
+	int	min;
+
+	i = 0;
+	min = 0;
+	temp = stack->array[i];
+	while (i <= stack->top)
+	{
+		if (temp > stack->array[i])
+		{
+			min = i;
+			temp = stack->array[i];
+		}
+		i++;
+	}
+	return (min);
+}
+
+int	where_is_max(t_stack *stack)
+{
+	int	i;
+	int	temp;
+	int	max;
+
+	i = 0;
+	max = 0;
+	temp = stack->array[i];
+	while (i <= stack->top)
+	{
+		if (temp < stack->array[i])
+		{
+			max = i;
+			temp = stack->array[i];
+		}
+		i++;
+	}
+	return (max);
+}
