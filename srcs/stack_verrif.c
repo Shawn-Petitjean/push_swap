@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:44:30 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/17 14:20:59 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/22 13:46:33 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,23 @@ void	print_stack(t_stack *stack)
 	i = stack->top;
 	while (i >= 0)
 		ft_printf("%d\n", stack->array[i--]);
+}
+
+int	where_is_ave(t_stack *stack, t_info info)
+{
+	int	i;
+	int	y;
+
+	i = 0;
+	y = stack->top;
+	while (stack->array[i] <= info.ave)
+		i++;
+	while (stack->array[y] <= info.ave)
+		y--;
+	if ((stack->top - y) <= i)
+		return (y);
+	else
+		return (i);
 }
 
 int	is_sort(t_stack *stack)

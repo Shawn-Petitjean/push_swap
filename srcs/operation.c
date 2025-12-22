@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:03:56 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/19 10:37:13 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/22 13:38:58 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	stack_rotate(t_stack *stack)
 
 	y = 1;
 	i = 0;
-	temp_array = malloc(sizeof(int) * stack->top);
+	temp_array = malloc(sizeof (int) * (stack->top + 1));
 	while (i != stack->top)
 	{
 		temp_array[y] = stack->array[i];
@@ -63,7 +63,7 @@ void	stack_rotate(t_stack *stack)
 		stack->array[i] = temp_array[i];
 		i++;
 	}
-	return (free(temp_array));
+	return ;
 }
 
 void	stack_rev_rotate(t_stack *stack)
@@ -74,8 +74,8 @@ void	stack_rev_rotate(t_stack *stack)
 
 	y = 0;
 	i = 1;
-	temp_array = malloc(sizeof(int) * stack->top);
-	while (i != stack->top + 1)
+	temp_array = malloc(sizeof (int) * (stack->top + 1));
+	while (i != stack->top +1)
 	{
 		temp_array[y] = stack->array[i];
 		i++;
@@ -88,5 +88,5 @@ void	stack_rev_rotate(t_stack *stack)
 		stack->array[i] = temp_array[i];
 		i++;
 	}
-	return (free(temp_array));
+	return ;
 }

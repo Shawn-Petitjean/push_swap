@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:46:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/15 13:45:37 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/22 16:49:01 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,4 +103,30 @@ char	**fill_c_tab(char **tab)
 	if (!parsing(c_tab))
 		return (NULL);
 	return (c_tab);
+}
+
+int	where_is_lis(t_stack *stack)
+{
+	int	i;
+	int	count;
+	int	temp_count;
+
+	i = 0;
+	temp_count = 0;
+	count = 0;
+	while (i < stack->top)
+	{
+		while (stack->array[i] < stack->array[i +1])
+		{
+			i++;
+			temp_count = i;
+		}
+		if (count < temp_count)
+		{
+			count = temp_count;	
+			temp_count = 0;
+		}
+		i++;
+	}
+	return (count);
 }

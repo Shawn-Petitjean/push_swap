@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/19 14:58:36 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/22 18:07:56 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,47 +15,52 @@
 
 void	init_swap(long int *tab, int len)
 {
-	t_stack	*a;
-	t_stack	*b;
-	t_info	*info;
+	t_stack	a;
+	t_stack	b;
+	t_info	info;
 
 	a = init_stack(tab, len);
 	b = init_stack(NULL, len);
-	info = init_info(a);
-	// print_stack(a);
-	push_swap(a, b, info);
-	// free(info);
-	// print_stack(a);
-	return (free(a->array), free(b->array)
-		, free(a), free(b));
+	info = init_info(&a);
+	// push_swap(&a, &b, info);
+	free(a.array);
+	free(b.array);
+	return ;
 }
 
-t_info	*init_info(t_stack *stack)
+t_info	init_info(t_stack *stack)
 {
-	t_info	*info;
+	t_info	info;
 	int		ave;
 	int		i;
 
 	i = 0;
 	ave = 0;
-	info = malloc(sizeof(t_info) * 1);
-	info->max = stack->array[i];
-	info->min = stack->array[i];
+	malloc(stack->len * sizeof(int));
+	info.max = stack->array[i];
+	info.min = stack->array[i];
+	info.lis = malloc(sizeof(int) * stack->len);
 	while (i < stack->len)
 	{
-		if (info->max < stack->array[i])
-			info->max = stack->array[i];
-		if (info->min > stack->array[i])
-			info->min = stack->array[i];
+		if (info.max < stack->array[i])
+			info.max = stack->array[i];
+		if (info.min > stack->array[i])
+			info.min = stack->array[i];
 		ave += stack->array[i++];
 	}
-	info->ave = ave / stack->len;
+	i = where_is_lis(stack);
+	info.ave = ave / stack->len;
+	ave = 0;
+	while (stack->array[i] > stack->array[i -1])
+	{
+		info.lis[ave++] = stack->array[i--];
+	}
 	return (info);
 }
 
-t_stack	*init_stack(long int *tab, int len)
+t_stack	init_stack(long int *tab, int len)
 {
-	t_stack	*stack;
+	t_stack	stack;
 	int		i;
 	int		*i_tab;
 
@@ -67,12 +72,11 @@ t_stack	*init_stack(long int *tab, int len)
 		i++;
 	}
 	i = len -1;
-	stack = malloc(sizeof(t_stack) * 1);
-	stack->array = malloc(len * sizeof(int));
-	stack->len = len;
-	stack->top = -1;
+	stack.array = malloc(len * sizeof(int));
+	stack.len = len;
+	stack.top = -1;
 	while (i >= 0 && tab)
-		stack_push(stack, i_tab[i--]);
+		stack_push(&stack, i_tab[i--]);
 	return (free (i_tab), free (tab), stack);
 }
 
