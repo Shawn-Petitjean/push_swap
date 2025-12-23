@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:46:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/22 16:49:01 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/23 11:00:19 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,25 +108,28 @@ char	**fill_c_tab(char **tab)
 int	where_is_lis(t_stack *stack)
 {
 	int	i;
+	int	y;
 	int	count;
 	int	temp_count;
 
-	i = 0;
-	temp_count = 0;
+	y = 0;
+	i = stack->top;
 	count = 0;
-	while (i < stack->top)
+	temp_count = 0;
+	while (i > 0)
 	{
-		while (stack->array[i] < stack->array[i +1])
+		while ((stack->array[i] < stack->array[i -1]) && i > 0)
 		{
-			i++;
-			temp_count = i;
-		}
-		if (count < temp_count)
+			y++;
+			i--;
+		}	
+		if (y > temp_count)
 		{
-			count = temp_count;	
-			temp_count = 0;
+			count = i;
+			temp_count = y;
 		}
-		i++;
+		y = 0;
+		i--;
 	}
 	return (count);
 }

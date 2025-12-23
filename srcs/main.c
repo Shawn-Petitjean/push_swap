@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:21:40 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/22 17:11:40 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/23 09:08:57 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,11 +23,11 @@ int	main(int arc, char **arv)
 	arv[arc] = NULL;
 	arv = fill_c_tab(&arv[1]);
 	if (!arv)
-		return (free(arv), ft_printf("ERROR\n"), 1);
+		return (free(arv), ft_printf("Error\n"), 1);
 	len = len_tab(arv);
 	tab = fill_i_tab(arv);
 	if (!tab)
-		return (free(tab), ft_printf("ERROR\n"), 1);
+		return (free(tab), ft_printf("Error\n"), 1);
 	init_swap(tab, len);
 	return (0);
 }
