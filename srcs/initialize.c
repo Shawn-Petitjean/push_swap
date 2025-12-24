@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/23 13:23:04 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/24 10:10:36 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	init_swap(long int *tab, int len)
 	a = init_stack(tab, len);
 	b = init_stack(NULL, len);
 	info = init_info(&a);
-	push_swap(&a, &b, info);
+	push_swap(&a, &b, &info);
 	free(a.array);
 	free(b.array);
 	return ;
@@ -36,10 +36,8 @@ t_info	init_info(t_stack *stack)
 
 	i = 0;
 	ave = 0;
-	malloc(stack->len * sizeof(int));
 	info.max = stack->array[i];
 	info.min = stack->array[i];
-	info.lis = malloc(sizeof(int) * stack->len);
 	while (i < stack->len)
 	{
 		if (info.max < stack->array[i])
@@ -48,13 +46,11 @@ t_info	init_info(t_stack *stack)
 			info.min = stack->array[i];
 		ave += stack->array[i++];
 	}
-	i = where_is_lis(stack);
 	info.ave = ave / stack->len;
-	ave = 0;
-	while (stack->array[i] > stack->array[i -1])
-	{
-		info.lis[ave++] = stack->array[i--];
-	}
+	info.e_lis = where_is_lis(stack);
+	info.s_lis = info.e_lis;
+	while (stack->array[info.s_lis] > stack->array[info.s_lis + 1])
+		info.s_lis++;
 	return (info);
 }
 

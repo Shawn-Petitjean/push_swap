@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:19:45 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/22 17:55:17 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/24 10:52:45 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ typedef struct s_info
 {
 	int	max;
 	int	min;
-	int	*lis;
+	int	s_lis;
+	int	e_lis;
 	int	ave;
 }	t_info;
 
@@ -44,7 +45,7 @@ int			where_is_min(t_stack *stack);
 int			where_is_max(t_stack *stack);
 void		print_stack(t_stack *stack);
 int			where_is_ave(t_stack *stack, t_info info);
-int		where_is_lis(t_stack *stack);
+int			where_is_lis(t_stack *stack);
 
 //operateur pour le deplacement de la stack
 void		stack_push(t_stack *stack, int value);
@@ -74,7 +75,7 @@ int			is_sort(t_stack *stack);
 
 //push_swap
 void		init_swap(long int *tab, int len);
-void		push_swap(t_stack *a_stack, t_stack *b_stack, t_info info);
+void		push_swap(t_stack *a_stack, t_stack *b_stack, t_info *info);
 
 //init arg
 void		init_swap(long int *tab, int len);
