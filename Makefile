@@ -2,7 +2,7 @@ NAME = push_swap
 CC = cc
 SRC_DIR = srcs
 SRC = main.c parsing.c fill_tab_pars.c operation.c stack_verrif.c initialize.c push_swap.c \
-instruction.c instruction_next.c rev_rotate.c
+instruction.c instruction_next.c rev_rotate.c n_move.c
 OBJ_DIR = objs
 SRCS = $(addprefix $(SRC_DIR)/, $(SRC))
 OBJ = $(patsubst $(SRC_DIR)/%.c,$(OBJ_DIR)/%.o,$(SRCS))

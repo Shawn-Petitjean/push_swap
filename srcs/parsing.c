@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 15:49:27 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/10 17:05:49 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/26 16:36:00 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,9 +36,6 @@ int	i_parsing(long int *tab, int len)
 
 int	int_lim(long int *tab, int len)
 {
-	int	i;
-
-	i = 0;
 	len--;
 	while (len >= 0)
 	{

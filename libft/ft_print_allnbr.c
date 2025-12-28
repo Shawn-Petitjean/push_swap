@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_print_allnbr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/17 09:59:02 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/09 16:30:07 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/26 16:42:39 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,11 +31,6 @@ int	ft_print_unbr(unsigned int n)
 	int		size;
 
 	size = ft_len_unint(n);
-	if (n < 0)
-	{
-		n = -n;
-		write (1, "-", 1);
-	}
 	if (n >= 10)
 		ft_print_nbr(n / 10);
 	res = (n % 10) + 48;

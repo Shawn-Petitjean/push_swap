@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:19:45 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/24 10:52:45 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/27 10:54:12 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ void		print_stack(t_stack *stack);
 int			where_is_ave(t_stack *stack, t_info info);
 int			where_is_lis(t_stack *stack);
 
+
 //operateur pour le deplacement de la stack
 void		stack_push(t_stack *stack, int value);
 void		stack_pop(t_stack *stack);
@@ -76,6 +77,10 @@ int			is_sort(t_stack *stack);
 //push_swap
 void		init_swap(long int *tab, int len);
 void		push_swap(t_stack *a_stack, t_stack *b_stack, t_info *info);
+int			n_pos(t_stack *a, int n);
+int			good_n(t_stack *a, t_stack *b);
+void		move(t_stack *a, t_stack *b, int pos);
+void		pre_move(t_stack *a, t_stack *b, int pos, int where_n);
 
 //init arg
 void		init_swap(long int *tab, int len);
