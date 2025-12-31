@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/24 10:10:36 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/30 10:19:10 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,12 @@ void	init_swap(long int *tab, int len)
 	a = init_stack(tab, len);
 	b = init_stack(NULL, len);
 	info = init_info(&a);
-	push_swap(&a, &b, &info);
+	if (len <= 3 && len > 1)
+		sort_3(&a);
+	else if (len <= 5 && len > 1)
+		sort_5(&a, &b);
+	else if (len > 1)
+		push_swap(&a, &b, &info);
 	free(a.array);
 	free(b.array);
 	return ;

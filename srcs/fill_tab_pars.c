@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:46:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/24 09:58:21 by shapetit         ###   ########.fr       */
+/*   Updated: 2025/12/30 09:35:06 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*ft_strjoin_swap(char *s1, char *s2)
 
 	i = 0;
 	y = 0;
-	a = malloc((ft_strlen(s1) + ft_strlen(s2) + 3) * sizeof(char));
+	a = ft_calloc(sizeof(char), (ft_strlen(s1) + ft_strlen(s2) + 3));
 	if (!a)
 		return (NULL);
 	while (s1[y] != '\0' && s1)
@@ -75,7 +75,7 @@ long int	*fill_i_tab(char **c_tab)
 	j = 0;
 	while (c_tab[j])
 		j++;
-	i_tab = malloc((j) * sizeof(long int));
+	i_tab = ft_calloc(sizeof(long int), (j));
 	j = 0;
 	while (c_tab[j])
 	{
@@ -83,9 +83,10 @@ long int	*fill_i_tab(char **c_tab)
 		free (c_tab[j]);
 		j++;
 	}
+	free (c_tab[j]);
 	free (c_tab);
 	if (!i_parsing(i_tab, j -1) || !int_lim(i_tab, j))
-		return (NULL);
+		return (free(i_tab), NULL);
 	return (i_tab);
 }
 
@@ -95,13 +96,17 @@ char	**fill_c_tab(char **tab)
 	char	**c_tab;
 	char	*str;
 
-	j = -1;
-	str = malloc(1);
-	while (tab[++j])
+	j = 0;
+	str = ft_calloc(sizeof(char), 1);
+	while (tab[j])
+	{
 		str = ft_strjoin_swap(str, tab[j]);
+		j++;
+	}
 	c_tab = ft_split(str, ' ');
+	free(str);
 	if (!parsing(c_tab))
-		return (NULL);
+		return (free_str(c_tab), NULL);
 	return (c_tab);
 }
 

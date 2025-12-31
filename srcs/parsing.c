@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 15:49:27 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/26 16:36:00 by shawn            ###   ########.fr       */
+/*   Updated: 2025/12/30 09:25:22 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,16 +20,16 @@ int	i_parsing(long int *tab, int len)
 
 	i = 1;
 	j = 0;
-	while (j < len)
+	while (j < len -1)
 	{
 		if (tab[j] == tab[i])
 			return (0);
-		i++;
-		if (!tab[i])
+		if (!tab[i] || i == len)
 		{
 			j++;
 			i = j + 1;
 		}
+		i++;
 	}
 	return (1);
 }
