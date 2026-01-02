@@ -6,108 +6,79 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/26 16:48:05 by shawn             #+#    #+#             */
-/*   Updated: 2025/12/31 12:03:23 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/02 16:51:25 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-void	move(t_stack *a, t_stack *b, int i_n, int pos)
+void	move(t_stack *a, t_stack *b, int i_b, int pos)
 {
-	if (i_n < b->top / 2)
+	if (i_b < b->top / 2)
 	{
-		while (i_n-- != -1)
+		while (i_b-- != -1)
 			rrb(b);
 	}
 	else 
 	{
-		while (i_n++ != b->top)
+		while (i_b++ < b->top)
 			rb(b);
 	}
-	if (pos == a->top +1 || pos == 0)
-		return (pa(b, a));
-	if (pos < a->top / 2)
+	if (pos == 0)
+		rra(a);
+	else if (pos < a->top / 2)
 	{
-		while (pos-- != 0)
+		while (pos-- >= 0)
 			rra(a);
 	}
-	else 
+	else
 	{
-		while (pos++ != a->top +1)
+		while (pos++ < a->top)
 			ra(a);
 	}
 	return (pa(b, a));
 }
-
-	// if (n_a < a->top / 2)
-	// 	while (n_a--)
-	// 		rra(a);
-	// else
-	// {
-	// 	n_a = a->top - n_a;
-	// 	while (n_a < 0)
-	// 		ra(a);
-	// }
-	// if (n_b < b->top / 2)
-	// 	while (n_b--)
-	// 		rrb(b);
-	// else
-	// {
-	// 	n_b = b->top - n_b;
-	// 	while (n_b--)
-	// 		rb(b);
-	// }
-	// pa(b, a);
 	
-void	move_up(t_stack *a, t_stack *b, int n_b, int n_a)
+void	move_up(t_stack *a, t_stack *b, int i_b, int pos)
 {
-	ft_printf("move_up\n");
-	int	temp;
+	int	temp_a;
+	int	temp_b;
 
-	n_a = a->top - n_a;
-	n_b = b->top - n_b;
-	temp = n_a + n_b;
-	if (n_a < n_b)
+	temp_a = a->top -pos;
+	temp_b = b->top -i_b;
+	if (temp_a < temp_b)
 	{
-		while (temp-- > n_b)
+		while (temp_a-- > 1 && temp_b--)
 			rr(a, b);
-		n_b = n_b - n_a;
-		while (n_b--)
+		while (temp_b-- > 0)
 			rb(b);
 	}
 	else
 	{
-		while (temp-- > n_a)
+		while (temp_b-- > 0 && temp_a--)
 			rr(a, b);
-		n_a = n_a - n_b;
-		while (n_a--)
+		while (temp_a-- > 0)
 			ra(a);
 	}
 	pa(b, a);
 	return ;
 }
 
-void	move_d(t_stack *a, t_stack *b, int n_b, int n_a)
+void	move_d(t_stack *a, t_stack *b, int i_b, int pos)
 {
-	ft_printf("move_d\n");
-	int	temp;
-
-	temp = n_a + n_b;
-	if (n_a < n_b)
+	if (pos < i_b)
 	{
-		while (temp-- != n_b)
+		while (pos-- >= 0 && i_b--)
 			rrr(a, b);
-		n_b = n_b - n_a;		
-		while (n_b--)
+		while (i_b--)
 			rrb(b);
 	}
 	else
 	{
-		while (temp-- != n_a)
+		while (i_b-- >= 0 && pos--)
 			rrr(a, b);
-		n_a = n_a - n_b;
-		while (n_a--)
+		while (pos--)
 			rra(a);
 	}
 	pa(b, a);
@@ -133,9 +104,9 @@ int	n_cost(t_stack *a, t_stack *b, int n)
 		a_pos = a->top - a_pos;
 		b_pos = b->top - b_pos;
 		if (a_pos > b_pos)
-			return (a_pos);
+			return (a_pos +1);
 		else 
-			return (b_pos);
+			return (b_pos +1);
 	}
 	if (a_pos >= a->top / 2 && a_pos > 0)
 		a_pos = a->top - a_pos;
@@ -147,7 +118,29 @@ int	n_cost(t_stack *a, t_stack *b, int n)
 		b_pos++;
 	return (a_pos + b_pos);
 }
-
+	// if (i_n < b->top / 2)
+	// {
+	// 	while (i_n-- != -1)
+	// 		rrb(b);
+	// }
+	// else 
+	// {
+	// 	while (i_n++ != b->top)
+	// 		rb(b);
+	// }
+	// if (pos == 0)
+	// 	rra(a);
+	// else if (pos < a->top / 2)
+	// {
+	// 	while (pos-- >= 0)
+	// 		rra(a);
+	// }
+	// else
+	// {
+	// 	while (pos++ != a->top +1)
+	// 		ra(a);
+	// }
+	// return (pa(b, a));
 
 int	n_pos(t_stack *a, int n)
 {
@@ -156,17 +149,19 @@ int	n_pos(t_stack *a, int n)
 	int	y;
 
 	i = 0;
-	y = 0;
-	temp = a->array[where_is_max(a)];
+	temp = a->array[where_is_max(a)] -n;
+	y = -1;
 	while (i != a->top +1)
 	{
-		if (temp > a->array[i] - n && a->array[i] - n > 0)
+		if (temp >= a->array[i] - n && a->array[i] - n > 0)
 		{
 			temp = a->array[i] - n;
-			y = i + 1;
+			y = i;
 		}
 		i++;
 	}
+	if (y == -1)
+		return(where_is_min(a));
 	return (y);
 }
 
