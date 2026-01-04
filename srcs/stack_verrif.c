@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   stack_verrif.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 14:44:30 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/22 13:46:33 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/04 09:24:35 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,7 +54,7 @@ int	is_sort(t_stack *stack)
 	int	i;
 
 	i = 0;
-	while (i < stack->top +1)
+	while (i <= stack->top)
 	{
 		if (stack->array[i] < stack->array[i +1])
 		{

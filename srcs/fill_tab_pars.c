@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tab_pars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:46:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/30 09:35:06 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/04 09:31:20 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,11 +123,11 @@ int	where_is_lis(t_stack *stack)
 	temp_count = 0;
 	while (i > 0)
 	{
-		while ((stack->array[i] < stack->array[i -1]) && i > 0)
+		while ((stack->array[i] < stack->array[i -1]) && i > 1)
 		{
 			y++;
 			i--;
-		}	
+		}
 		if (y > temp_count)
 		{
 			count = i;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/30 10:19:10 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/04 09:34:12 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,13 @@ void	init_swap(long int *tab, int len)
 	a = init_stack(tab, len);
 	b = init_stack(NULL, len);
 	info = init_info(&a);
-	if (len <= 3 && len > 1)
+	if (is_sort(&a) == 1)
+	{
+		free(a.array);
+		free(b.array);
+		return ;
+	}
+	else if (len <= 3 && len > 1)
 		sort_3(&a);
 	else if (len <= 5 && len > 1)
 		sort_5(&a, &b);
@@ -54,7 +60,7 @@ t_info	init_info(t_stack *stack)
 	info.ave = ave / stack->len;
 	info.e_lis = where_is_lis(stack);
 	info.s_lis = info.e_lis;
-	while (stack->array[info.s_lis] > stack->array[info.s_lis + 1])
+	while (stack->array[info.s_lis] > stack->array[info.s_lis + 1] && info.s_lis > 1)
 		info.s_lis++;
 	return (info);
 }

@@ -6,16 +6,16 @@
 /*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 17:17:58 by shapetit          #+#    #+#             */
-/*   Updated: 2026/01/04 09:06:40 by shawn            ###   ########.fr       */
+/*   Updated: 2026/01/04 09:13:57 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 #include "push_swap.h"
 
-int	check(t_stack *a, t_stack *b, int	cost_d_b, int cost_d_a)
+int	check(t_stack *a, t_stack *b, int cost_d_b, int cost_d_a)
 {
-	int cost_d_t;
+	int	cost_d_t;
 	int	cost_u_t;
 	int	u_a_d_b;
 	int	d_a_u_b;
@@ -34,8 +34,8 @@ int	check(t_stack *a, t_stack *b, int	cost_d_b, int cost_d_a)
 		cost_u_t = cost_d_b;
 	u_a_d_b += cost_d_a;
 	d_a_u_b += cost_d_b;
-	if ((u_a_d_b < cost_d_t && u_a_d_b < cost_u_t) 
-	|| (d_a_u_b < cost_d_t && d_a_u_b < cost_u_t))
+	if ((u_a_d_b < cost_d_t && u_a_d_b < cost_u_t)
+		|| (d_a_u_b < cost_d_t && d_a_u_b < cost_u_t))
 		return (0);
 	if (cost_d_t <= cost_u_t)
 		return (-1);
@@ -71,7 +71,6 @@ void	swap_sort(t_stack *a, t_stack *b)
 	int	i;
 	int	y;
 	int	less_c;
-	int	temp;
 
 	while (b->top >= 0)
 	{
@@ -81,18 +80,17 @@ void	swap_sort(t_stack *a, t_stack *b)
 		while (i < b->top)
 		{
 			i++;
-			temp = n_cost(a, b, i, n_pos(a, b->array[i]));
-			if (less_c >= temp)
+			if (less_c >= n_cost(a, b, i, n_pos(a, b->array[i])))
 			{
 				y = i;
-				less_c = temp;
+				less_c = n_cost(a, b, i, n_pos(a, b->array[i]));
 			}
 		}
 		if (check(a, b, y, n_pos(a, b->array[y])) == -1)
 			move_d(a, b, y, n_pos(a, b->array[y]));
 		else if (check(a, b, y, n_pos(a, b->array[y])) == 1)
 			move_up(a, b, y, n_pos(a, b->array[y]));
-		else 
+		else
 			move(a, b, y, n_pos(a, b->array[y]));
 	}
 }
@@ -102,7 +100,7 @@ void	last_sort(t_stack *a)
 	int	min;
 
 	min = where_is_min(a);
-	if (min >= a->top /2)
+	if (min >= a->top / 2)
 	{
 		while (min++ < a->top)
 			ra(a);

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:19:45 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/30 09:54:52 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/04 09:22:16 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,8 @@ int			is_sort(t_stack *stack);
 void		init_swap(long int *tab, int len);
 void		push_swap(t_stack *a_stack, t_stack *b_stack, t_info *info);
 int			n_pos(t_stack *a, int n);
-int			n_cost(t_stack *a, t_stack *b, int n);
+int			is_move(int d_a_u_b, int u_a_d_b);
+int			n_cost(t_stack *a, t_stack *b, int i_b, int i_a);
 void		sort_3(t_stack *a);
 void		sort_5(t_stack *a, t_stack *b);
 

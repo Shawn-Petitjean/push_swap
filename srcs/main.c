@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
+/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:21:40 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/30 15:17:12 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/04 09:21:54 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,13 @@ void	sort_3(t_stack *a)
 		sa(a);
 	}
 	return ;
+}
+
+int	is_move(int d_a_u_b, int u_a_d_b)
+{
+	if (u_a_d_b < d_a_u_b)
+		return (u_a_d_b);
+	return (d_a_u_b);
 }
 
 void	sort_5(t_stack *a, t_stack *b)
