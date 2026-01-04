@@ -6,7 +6,7 @@
 /*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:19:45 by shapetit          #+#    #+#             */
-/*   Updated: 2026/01/04 09:22:16 by shawn            ###   ########.fr       */
+/*   Updated: 2026/01/04 09:56:54 by shawn            ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,6 @@ int			where_is_max(t_stack *stack);
 void		print_stack(t_stack *stack);
 int			where_is_ave(t_stack *stack, t_info info);
 int			where_is_lis(t_stack *stack);
-
 
 //operateur pour le deplacement de la stack
 void		stack_push(t_stack *stack, int value);
