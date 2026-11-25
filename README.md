@@ -6,7 +6,7 @@ The project is writting a program in C that takes as an argument two stack of in
 It should display the shortest sequence of instruction needed to sort the 'a' stack with the smallest number on top with the less operation.
 We have the restricting operation that we need on the subject we cant move how we like.
 
-## Instalation ##
+## Instruction ##
 
 **The programs compile in C, he have the flag -Wall -Wextra -Werror and with the compilator cc**
 
@@ -24,7 +24,7 @@ clean with:
 
 **No IA was use for coding**
 
-IA was use for simplify some algorithm and have is opinion on the best approach
+IA was use for simplify some algorithm and have his opinion on the best approach
 
 The documentation use was:
 

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   initialize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/16 08:47:47 by shapetit          #+#    #+#             */
-/*   Updated: 2026/01/04 09:57:10 by shawn            ###   ########.fr       */
+/*   Updated: 2026/01/06 10:58:10 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ t_info	init_info(t_stack *stack)
 	info.e_lis = where_is_lis(stack);
 	info.s_lis = info.e_lis;
 	while (stack->array[info.s_lis] > stack->array[info.s_lis + 1]
-		&& info.s_lis > 1)
+		&& info.s_lis + 1 > stack->top)
 		info.s_lis++;
 	return (info);
 }
@@ -129,5 +129,3 @@ int	where_is_max(t_stack *stack)
 	}
 	return (max);
 }
-
-//654 231 5 0 14 800 11 215 1587 3854 2314

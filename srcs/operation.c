@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/11 11:03:56 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/22 13:38:58 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/05 16:00:23 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,7 @@ void	stack_rotate(t_stack *stack)
 		stack->array[i] = temp_array[i];
 		i++;
 	}
+	free (temp_array);
 	return ;
 }
 
@@ -88,5 +89,6 @@ void	stack_rev_rotate(t_stack *stack)
 		stack->array[i] = temp_array[i];
 		i++;
 	}
+	free (temp_array);
 	return ;
 }

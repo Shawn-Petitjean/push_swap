@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   fill_tab_pars.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/10 10:46:47 by shapetit          #+#    #+#             */
-/*   Updated: 2026/01/04 09:31:20 by shawn            ###   ########.fr       */
+/*   Updated: 2026/01/07 09:07:17 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,7 +103,7 @@ char	**fill_c_tab(char **tab)
 		str = ft_strjoin_swap(str, tab[j]);
 		j++;
 	}
-	c_tab = ft_split(str, ' ');
+	c_tab = split_swap(str, ' ');
 	free(str);
 	if (!parsing(c_tab))
 		return (free_str(c_tab), NULL);

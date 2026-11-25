@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/11/07 08:47:23 by shapetit          #+#    #+#             */
-/*   Updated: 2025/11/10 16:52:35 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/07 09:19:03 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,16 @@
 static int	ft_strclen(char const *s, char c)
 {
 	int	i;
+	int	y;
 
 	i = 0;
+	y = 0;
+	while (s[y] == '0')
+		y++;
+	i = y;
 	while (s[i] != '\0' && s[i] != c)
 		i++;
-	return (i);
+	return (i - y);
 }
 
 static int	ft_count_n_word(char const *s, char c)
@@ -50,6 +55,8 @@ static char	*ft_strcdup(char const *src, char c)
 	dest = malloc((ft_strclen(src, c) + 1) * sizeof(char));
 	if (!dest)
 		return (NULL);
+	while (src[i] == '0' && src[i] != c)
+		i++;
 	while (src[i] != '\0' && src[i] != c)
 	{
 		dest[i] = src[i];

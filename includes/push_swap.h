@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: shawn <shawn@student.42.fr>                +#+  +:+       +#+        */
+/*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 11:19:45 by shapetit          #+#    #+#             */
-/*   Updated: 2026/01/04 09:56:54 by shawn            ###   ########.fr       */
+/*   Updated: 2026/01/07 09:02:16 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,7 @@ long int	*fill_i_tab(char **c_tab);
 char		**fill_c_tab(char **tab);
 int			len_tab(char **tab);
 void		free_str(char **str);
+char		**split_swap(char	const *s, char c);
 
 //outil stack
 int			where_is_min(t_stack *stack);

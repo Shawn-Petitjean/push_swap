@@ -6,7 +6,7 @@
 /*   By: shapetit <shapetit@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/09 15:49:27 by shapetit          #+#    #+#             */
-/*   Updated: 2025/12/30 09:25:22 by shapetit         ###   ########.fr       */
+/*   Updated: 2026/01/06 14:58:19 by shapetit         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,9 @@ int	i_parsing(long int *tab, int len)
 
 	i = 1;
 	j = 0;
-	while (j < len -1)
+	if (tab[0] == tab[1])
+		return (0);
+	while (j < len -1 || i < len)
 	{
 		if (tab[j] == tab[i])
 			return (0);
@@ -28,6 +30,8 @@ int	i_parsing(long int *tab, int len)
 		{
 			j++;
 			i = j + 1;
+			if (tab[j] == tab[i] && i <= len)
+				return (0);
 		}
 		i++;
 	}
@@ -51,11 +55,18 @@ static int	is_int(char *str)
 	int	i;
 
 	i = 0;
-	while (str[i] == '-' || (str[i] >= '0' && str[i] <= '9') || str[i] == ' ')
+	while ((str[i] == '-' || str[i] == '+' )
+		|| (str[i] >= '0' && str[i] <= '9') || str[i] == ' ')
 	{
+		if (ft_strlen(str) == 1 && (str[0] == '+' || str[0] == '-'))
+			return (0);
 		i++;
 		if (str[i] == '\0')
 			return (1);
+		if (i > 11)
+			return (0);
+		if ((str[i] == '-' || str[i] == '+') && i > 0)
+			return (0);
 	}
 	return (0);
 }
